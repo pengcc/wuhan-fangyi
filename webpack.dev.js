@@ -4,6 +4,9 @@ const common = require('./webpack.common.js')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+const sourceMap = true
+const localIdentName = '[local]--from--[path][name][ext]'
+
 module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
@@ -17,27 +20,26 @@ module.exports = merge(common, {
       use: [{
         loader: "style-loader"
       }, {
-        loader: "css-loader"
+        loader: "css-loader",
+        // options: {
+          // sourceMap,
+          // localIdentName,
+          // camelCase: true,
+          // modules: true,
+        // }
       }, {
         loader: "sass-loader"
       },]
-    },
-      // {
-      //   test: /\.css$/,
-      //   use: [
-      //     {
-      //       loader: "css-loader",
-      //     }]
-      // }
-    ]
+    }]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: 'WuhanFangyi',
-      inject: false,
-      template: require('html-webpack-template'),
-      bodyHtmlSnippet: '<main class="main" id="app"></main>'
+      // title: 'WuhanFangyi',
+      // inject: false,
+      template: 'src/index.ejs'
+      // template: require('html-webpack-template'),
+      // bodyHtmlSnippet: '<main class="main" id="app"></main>'
     })
   ]
 })
