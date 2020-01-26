@@ -5,25 +5,27 @@
 
 // Read more on Actions - https://redux.js.org/docs/basics/Actions.html
 
-import { INCREMENT_NUM, DECREMENT_NUM, RESET } from "../constants/action-types";
+import * as AC from "../constants/action-types";
 
 export function incrementNum(payload) {
   return {
-    type: INCREMENT_NUM,
+    type: AC.INCREMENT_NUM,
     payload: payload
   };
 }
 
 export function decrementNum(payload) {
   return {
-    type: DECREMENT_NUM,
+    type: AC.DECREMENT_NUM,
     payload: payload
   };
 }
 
 export function resetCounter(payload) {
   return {
-    type: RESET,
+    type: AC.RESET,
     payload: payload
   };
 }
+
+

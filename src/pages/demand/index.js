@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {incrementNum} from '../../actions/counter-actions'
+import {incrementNum} from '../../actions/count'
 import _ from 'lodash'
 import {Card} from 'antd'
 

@@ -10,3 +10,4 @@ export const DECREMENT_NUM = "DECREMENT_NUM";
 export const RESET = "RESET";
 
 /* eslint-enable */
+export const SET_DEMAND_LIST = 'SET_DEMAND_LIST';
