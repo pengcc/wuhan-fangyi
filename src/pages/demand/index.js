@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {fetchDemandList} from '../../actions/actions'
+import {fetchList} from '../../actions/data-actions'
 import _ from 'lodash'
-import {Card, Input, Radio} from 'antd'
+import {Card, Input} from 'antd'
 import Filter from '../../components/filter'
+import {allToJS} from "../../utils"
+
 
 const {Search} = Input
 
@@ -16,7 +18,7 @@ class Index extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchDemandList())
+    // this.props.dispatch(fetchList({apiType: 'demands'}))
   }
 
   onSearch() {
@@ -35,9 +37,8 @@ class Index extends Component {
   }
 
   render() {
-    const {list} = this.props
+    const {list} = allToJS(this.props)
     const {searching} = this.state
-    const cardCount = [1, 2, 3, 4, 5, 6, 7]
     return <div className='demand'>
       <div style={{padding: '25px 22px 16px'}}>
         <Search
@@ -77,11 +78,11 @@ class Index extends Component {
       </div>
       <div style={{background: '#F7F7F7', padding: 20}}>
         {
-          _.map(cardCount, (card) => {
-            return <Card bordered={false} key={card} style={{marginBottom: 20}}>
-              <p>武汉大学中南医院</p>
-              <p>发布时间</p>
-              <p>所需物资</p>
+          _.map(list, (one) => {
+            return <Card bordered={false} key={_.get(one, 'id')} style={{marginBottom: 20}}>
+              <p>{_.get(one, 'title')}</p>
+              <p>发布时间：{_.get(one, 'publish_date')}</p>
+              <div>{_.get(one, 'full_content')}</div>
             </Card>
           })
         }
@@ -92,6 +93,8 @@ class Index extends Component {
 
 export default connect((store) => {
   return {
-    list: store.reducer.demandList
+    list: store.reducer.getIn(['demands', 'list']),
+    fetching: store.reducer.getIn(['demands', 'fetching']),
+    fetched: store.reducer.getIn(['demands', 'fetched']),
   }
 })(Index)

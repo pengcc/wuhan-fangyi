@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {incrementNum} from '../../actions/actions'
+// import {incrementNum} from '../../actions/actions'
 
 class Index extends Component{
 
   componentDidMount() {
-    this.props.dispatch(incrementNum())
+    // this.props.dispatch(incrementNum())
   }
 
   render(){

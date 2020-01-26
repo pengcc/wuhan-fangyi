@@ -1,17 +1,24 @@
-import React, {Component, Fragment} from "react"
+import React, {Component, Fragment} from "react";
 // import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
-import {Tabs} from 'antd'
+import { connect } from 'react-redux';
 
-const {TabPane} = Tabs
+import {Tabs} from 'antd';
 
-import Demand from './pages/demand'
-import Donor from './pages/donor'
-import FakeNews from './pages/fake-news'
+const {TabPane} = Tabs;
 
+import Demand from './pages/demand';
+import Donor from './pages/donor';
+import FakeNews from './pages/fake-news';
+
+import initApp from './utils/initApp';
 
 class App extends Component {
   componentDidCatch(error, errorInfo) {
     console.error(error)
+  }
+
+  componentDidMount() {
+    this.props.initApp();
   }
 
   render() {
@@ -19,10 +26,10 @@ class App extends Component {
       <Fragment>
         {/*onChange={}*/}
         <Tabs defaultActiveKey="1">
-          <TabPane tab="需求方" key="1">
+          <TabPane tab="物资需求" key="1">
             <Demand/>
           </TabPane>
-          <TabPane tab="捐助者" key="2">
+          <TabPane tab="物资提供" key="2">
             <Donor/>
           </TabPane>
           <TabPane tab="虚假信息" key="3">
@@ -39,4 +46,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default connect(null, {initApp})(App)

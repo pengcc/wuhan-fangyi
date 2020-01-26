@@ -1,0 +1,5 @@
+const testData = {
+  'demands': {"status":"success","message":"[{\"id\":\"3\",\"item_type\":\"医疗\",\"title\":\"武汉大学中南医院\",\"full_content\":\"所需物资：xxxxxxx\",\"publish_date\":\"2020.01.25 8:00\",\"address\":\"湖北省武汉市武昌区东湖路169号武汉大学中南医院\",\"contact_person_name\":\"钟老师\",\"contact\":\"1502132921\",\"topic_status\":\"待解决\",\"urgency_rating\":\"5\",\"verify_status\":\"已核实\",\"publish_date_epoch_time\":\"1580041021\"},{\"id\":\"4\",\"item_type\":\"医疗\",\"title\":\"武汉大学中南医院2\",\"full_content\":\"所需物资：xxxxxxx\",\"publish_date\":\"2020.01.25 8:00\",\"address\":\"湖北省武汉市武昌区东湖路169号武汉大学中南医院\",\"contact_person_name\":\"钟老师\",\"contact\":\"1502132921\",\"topic_status\":\"待解决\",\"urgency_rating\":\"5\",\"verify_status\":\"已核实\",\"publish_date_epoch_time\":\"1580041021\"}]"},
+}
+
+export default testData
