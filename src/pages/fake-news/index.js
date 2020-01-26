@@ -1,10 +1,21 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {incrementNum} from '../../actions/counter-actions'
 
-function Index(){
-  return <div>需求方</div>
+class Index extends Component{
+
+  componentDidMount() {
+    this.props.dispatch(incrementNum())
+  }
+
+  render(){
+    const {count} = this.props
+    return <div>需求方</div>
+  }
 }
 
-export default connect(()=>{
-  return {}
+export default connect((store)=>{
+  return {
+    count: store.count
+  }
 })(Index)
